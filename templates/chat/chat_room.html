@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>global_chat_room</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        const THIS_URL = '{% url "chat:chat_room" room.id %}';
+        const REFRESH_URL = '{% url "chat:refresh" room.id %}';
+    </script>
+    
+    {# ajax送信前にCSRFトークンをセットするコード #}
+    <script src="{% static 'chat/js/ajax.js' %}"></script>
+    {# ajaxを送信するコード #}
+    <script src="{% static 'chat/js/chat_room.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'chat/css/chat_room.css' %}">
+
+</head>
+<body>
+    <main class="container">
+
+
+
+        <h1>{{ room.name }}</h1>
+        
+        <div id="content_area">
+            {% include "chat/content.html" %}
+        </div>
+
+
+        <form id="form_area" action="" method="POST">
+            {% csrf_token %}
+            <textarea id="textarea" class="form-control" name="comment"></textarea>
+            <input id="submit" type="button" value="送信">
+        </form>
+
+        <form action="{% url 'chat:chat_room_exit' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="退室">
+        </form>
+        
+    </main>
+</body>
+</html>

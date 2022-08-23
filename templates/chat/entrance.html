@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>global_chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <h1 class="bg-primary text-white">チャットサイト</h1>
+    <main class="container">
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            名前：<input type="text" name="name" placeholder="名前を入力"><br>
+            使用言語：<select name="language">
+                <option name="language" value="Japanese">日本語</option>
+                <option name="language" value="English">English</option>
+                <option name="language" value="Chinese">中文</option>
+                <option name="language" value="Korean">한국어</option>
+                <option name="language" value="German">Deutsch</option>
+                <option name="language" value="French">Français</option>
+            </select><br>
+            <input id="submit" type="submit" value="参加">
+        </form>
+        
+    </main>
+</body>
+</html>

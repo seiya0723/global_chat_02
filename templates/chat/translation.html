@@ -1,0 +1,13 @@
+{% if language == "Japanese" %}
+<div>{{ language }}:{{ chat.ja_comment }}</div>
+{% elif language == "English" %}
+<div>{{ language }}:{{ chat.en_comment }}</div>
+{% elif language == "Chinese" %}
+<div>{{ language }}:{{ chat.zh_comment }}</div>
+{% elif language == "Korean" %}
+<div>{{ language }}:{{ chat.ko_comment }}</div>
+{% elif language == "German" %}
+<div>{{ language }}:{{ chat.de_comment }}</div>
+{% elif language == "French" %}
+<div>{{ language }}:{{ chat.fr_comment }}</div>
+{% endif %}

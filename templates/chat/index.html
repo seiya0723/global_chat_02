@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>global_chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <h1 class="bg-primary text-white">チャットサイト</h1>
+    <main class="container">
+
+        <h2>部屋を作る</h2>
+        <form class="my-2" action="" method="POST">
+            {% csrf_token %}
+            部屋名：<input type="text" name="room_name" placeholder="部屋名を入力"><br>
+            <input id="submit" type="submit" value="入室">
+        </form>
+
+
+        <h2>部屋に入る</h2>
+        <form id="form_area" class="my-2" action="" method="POST">
+            {% csrf_token %}
+            部屋選択：
+            <select name="room">
+                {% for room in rooms %}
+                <option value="{{ room.id }}">{{ room.room_name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <input id="submit" type="submit" value="入室">
+        </form>
+
+
+        <form action="{% url 'chat:index_exit' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="終了">
+        </form>
+        
+    </main>
+</body>
+</html>

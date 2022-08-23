@@ -1,0 +1,26 @@
+{% load custom_tag %}
+
+{% for chat in chats %}
+
+{% if forloop.last %}
+<input id="first" type="hidden" value="{{ chat.id }}" name="first">
+{% endif %}
+
+
+<div class="border">
+    <div>
+        <div>name:{{ chat.name }}</div>
+        <div>{{ chat.dt }}</div>
+        <div>{{ chat.ip }}</div>
+
+        <div>{{ chat.comment }}</div>
+
+        {% same_name_check chat.name request.COOKIES.name request.COOKIES.language chat %}
+     
+    </div>
+</div>
+
+{% empty %}
+<input id="first" type="hidden" value="" name="first">
+
+{% endfor %}
